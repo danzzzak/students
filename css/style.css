@@ -1,0 +1,11 @@
+.container-flex {
+    display: flex;
+    justify-content: space-around;
+}
+.header__btns {
+    justify-content: space-between;
+}
+.table {
+    margin: 0 auto;
+    
+}
