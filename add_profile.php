@@ -15,5 +15,13 @@ $sql = 'INSERT INTO student(name, lastname, ngroup, email, points, year, city) V
 $query = $pdo->prepare($sql);
 $query->execute( [$name, $lastname, $ngroup, $email, $points, $year, $city] );
 
+setcookie('username', $name, time() + 3600 * 60, '/');
+setcookie('userlastname', $lastname, time() + 3600 * 60, '/');
+setcookie('userngoup', $ngroup, time() + 3600 * 60, '/');
+setcookie('useremail', $email, time() + 3600 * 60, '/');
+setcookie('userpoints', $points, time() + 3600 * 60, '/');
+setcookie('useryear', $year, time() + 3600 * 60, '/');
+setcookie('usercity', $city, time() + 3600 * 60, '/');
+
 
 echo 'Ready';

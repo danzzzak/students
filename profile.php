@@ -60,9 +60,9 @@
             cache: false,
             data: {'name': name, 'lastname': lastname, 'ngroup': ngroup, 'email': email, 'points': points, 'year': year, 'city': city},
             dataType: 'html',
-            success: function() {
+            success: function(data) {
                 if (data == 'Ready') {
-                    console.log('all okey');
+                    window.location.href = 'change-profile.php';
                 }
                 else  {console.log('OSHIBKA')}
             }

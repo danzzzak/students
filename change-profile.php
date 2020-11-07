@@ -40,3 +40,35 @@
         </button>
     </form>
 </main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $('#accept').click(function () {
+        const name = $('#name').val();
+        const lastname = $('#lastname').val();
+        const ngroup = $('#ngroup').val();
+        const email = $('#email').val();
+        const points = $('#points').val();
+        const year = $('#year').val();
+        const city = $('#city').val();
+        console.log(name, lastname, email, year);
+
+        $.ajax( {
+            url: 'change-profile-indb.php',
+            type: 'POST',
+            cache: false,
+            data: {'name': name, 'lastname': lastname, 'ngroup': ngroup, 'email': email, 'points': points, 'year': year, 'city': city},
+            dataType: 'html',
+            success: function(data) {
+                if (data == 'Ready') {
+                    console.log('dadsadsad');
+                }
+                else  {console.log('OSHIBKA')}
+            }
+        })
+    })
+
+
+
+</script>

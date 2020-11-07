@@ -18,10 +18,11 @@ $usercity = $_COOKIE['usercity'];
 
 require_once 'mysql.php';
 
-$id = 'SELECT ID FROM student WHERE name = "$username", lastname = "$userlastname", ngroup = "$userngoup",
-                                         email = "$useremail", points = "$userpoints", year = "$useryear", city = "$usercity" ';
+$id = "SELECT id FROM `student` WHERE `name` = '$username' `lastname` = '$userlastname', `ngroup` = '$userngoup',
+`email` = '$useremail', `points` = '$userpoints', `year` = '$useryear', `city` = '$usercity' ";
 
-$sql = 'UPDATE student SET name = ?, lastname =? , ngroup =? , email =? , points =? , year =? , city =? WHERE id = ? ' ;
+
+$sql = "UPDATE `student` SET `name` = ?, lastname =? , ngroup =? , email =? , points =? , year =? , city =?  WHERE  id = ? " ;
 $query = $pdo->prepare($sql);
 $query->execute([$name, $lastname, $ngroup, $email, $points, $year, $city, $id]);
 
