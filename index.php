@@ -26,28 +26,43 @@
                 <div class="search col-md-6">search</div>
             </div>
         </div>
-    
-        <div class="table__body">
-            <div class="row mt-5">
-                <div class="name col-md-3">name</div>
-                <div class="last-name col-md-3">last-name</div>
-                <div class="ngroup col-md-3">ngroup</div>
-                <div class="points col-md-3">points</div>
-            </div>
-        </div>
 
+        <table cellpadding="0" cellspacing="0" border="0" id="table" class="table_sort">
+
+        <thead>
+            <tr>
+                <div class="table__body">
+                    <div class="row mt-5">
+                        <th><div class="name col-md-3"></div> <a href=''> name </a></div></th>
+                        <th><div class="last-name col-md-3"> <a href=''>last-name </a></div></th>
+                        <th><div class="ngroup col-md-3"> <a href=''>ngroup </a></div></th>
+                        <th><div class="points col-md-3"> <a href=''>points </a></div></th>
+                    </div>
+                </div>    
+            </tr>
+        </thead>
+
+    <tbody> 
+        <tr>
         <div class="table__result">
             <div class="row mt-5">
-                <div class="name col-md-3" ><?php require 'table/table-name.php' ?>     </div>
-                <div class="last-name col-md-3"> <?php require 'table/table-lastname.php' ?></div>
-                <div class="ngroup col-md-3"> <?php require 'table/table-ngroup.php' ?>   </div>
-                <div class="points col-md-3"> <?php require 'table/table-points.php' ?>   </div>
+                <td><div class="name col-md-3" > <?php require 'table/table-name.php' ?>     </div></td>
+                <td><div class="last-name col-md-3"> <?php require 'table/table-lastname.php' ?></div></td>
+                <td><div class="ngroup col-md-3"> <?php require 'table/table-ngroup.php' ?>   </div></td>
+                <td><div class="points col-md-3"> <?php require 'table/table-points.php' ?>   </div></td>
             </div>
         </div>
-    
+        </tr>   
+    </tbody>
+
+        </table>
+
         <div class="table__pages">
     
         </div>
     </div>
+
+    <script src="scripts.js"></script>
 </body>
+
 </html>
