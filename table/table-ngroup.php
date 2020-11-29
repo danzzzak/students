@@ -1,7 +1,6 @@
 <?php
 
 require_once 'mysql.php';
-require_once 'sortvalues.php';
 
 
 $sql = 'SELECT * FROM `student` ORDER BY `id` DESC';

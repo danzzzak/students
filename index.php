@@ -9,58 +9,69 @@
 </head>
 <body>
 
-<?php require 'blocks/header.php'?>
-    <div class="table">
-        <?php
-        require_once 'mysql.php';
+<?php require 'blocks/header.php';
+require 'sortvalues.php'?>
 
-        $sql = 'SELECT * FROM `student` ORDER BY `id` DESC';
-        $query = $pdo->query($sql);
-        while ($row = $query->fetch(PDO::FETCH_OBJ) ) {
-            $nametable = $row->name;
-        }
-        ?>
-        <div class="table__header">
-            <div class="row">
-                <div class="list col-md-6">Stisok</div>
-                <div class="search col-md-6">search</div>
-            </div>
-        </div>
+    
+<?php
 
-        <table cellpadding="0" cellspacing="0" border="0" id="table" class="table_sort">
+$mysqli = NEW MySQLi('localhost', 'root', 'root', 'students');
 
+if(isset($_GET['order'])) {
+    $order = $_GET['order'];
+} else {
+    $order = 'name'; // default
+}
+
+if(isset($_GET['sort'])) {
+    $sort = $_GET['sort'];
+} else {
+    $sort = 'ASC'; // default
+}
+
+$resultSet = $mysqli->query("SELECT * FROM `student` ORDER BY $order $sort");
+echo "
+        <table cellpadding='2' cellspacing='0' border='1' id='table' class='table_sort'>
         <thead>
             <tr>
-                <div class="table__body">
-                    <div class="row mt-5">
-                        <th><div class="name col-md-3"></div> <a href=''> name </a></div></th>
-                        <th><div class="last-name col-md-3"> <a href=''>last-name </a></div></th>
-                        <th><div class="ngroup col-md-3"> <a href=''>ngroup </a></div></th>
-                        <th><div class="points col-md-3"> <a href=''>points </a></div></th>
-                    </div>
-                </div>    
-            </tr>
+                <div class='table__body'>
+                <div class='row mt-5'>
+                    <div class='qwee'><th><a href='?order=name&&sort=$sort'> name </a></th> </div>
+                    <th><a href='?order=lastname&&sort=$sort'>last-name </a></th>
+                    <th><a href='?order=ngroup&&sort=$sort'>ngroup </a></th>
+                    <th><a href='?order=points&&sort=$sort'>points </a></th>
+                </div>
+                </div>   
         </thead>
+";
+while ($rows = $resultSet->fetch_assoc()) {
+    $name = $rows['name'];
+    $lastname = $rows['lastname'];
+    $ngroup = $rows['ngroup'];
+    $points = $rows['points'];
 
+    echo "
     <tbody> 
-        <tr>
-        <div class="table__result">
-            <div class="row mt-5">
-                <td><div class="name col-md-3" > <?php require 'table/table-name.php' ?>     </div></td>
-                <td><div class="last-name col-md-3"> <?php require 'table/table-lastname.php' ?></div></td>
-                <td><div class="ngroup col-md-3"> <?php require 'table/table-ngroup.php' ?>   </div></td>
-                <td><div class="points col-md-3"> <?php require 'table/table-points.php' ?>   </div></td>
-            </div>
+    <tr>
+        <div class='row'>
+            <td><div class='col-md-3'>$name </div> </td>
+            <td><div class='col-md-3'>$lastname</div></td>
+            <td><div class='col-md-3'>$ngroup</div></td>
+            <td><div class='col-md-3'>$points</div></td> 
         </div>
         </tr>   
     </tbody>
 
-        </table>
+    </tr>
+    ";
 
-        <div class="table__pages">
-    
-        </div>
-    </div>
+}
+
+echo "
+
+</table>
+";
+?>
 
     <script src="scripts.js"></script>
 </body>
